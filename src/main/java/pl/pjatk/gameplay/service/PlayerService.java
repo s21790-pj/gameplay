@@ -21,6 +21,13 @@ public class PlayerService {
     }
 
     public Optional<Player> findById(long id) {
+        if (id == 10) {
+            throw new RuntimeException("abc");
+        } else {
+            return playerRepository.findById(id);
+        }
+    }
+
 //        List<Player> players = new ArrayList<>();
 //        players.add(new Player((long) 1, "Payer 1", 100, 18, 5));
 //        players.add(new Player((long) 2, "Payer 2", 100, 12, 8));
@@ -41,8 +48,7 @@ public class PlayerService {
 //            }
 //        }
 //        return new Player();
-        return playerRepository.findById(id);
-    }
+
 
     public void delete(Long id){
         playerRepository.deleteById(id);

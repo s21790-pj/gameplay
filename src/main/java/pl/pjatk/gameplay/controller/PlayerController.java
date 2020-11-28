@@ -52,9 +52,9 @@ public class PlayerController {
         return ResponseEntity.ok(playerService.update(id, playerWithUpdatedProperties));
     }
 
-    @PutMapping("/{id}/{id_2}")
-    public ResponseEntity<Player> attack(@PathVariable long id, @PathVariable long id_2){
-        return ResponseEntity.ok(damageService.playerAttack(id, id_2));
-    }
+//    @PutMapping("/{id}/{id_2}")
+//    public ResponseEntity<Player> attack(@PathVariable long id, @PathVariable long id_2){
+//        return ResponseEntity.ok(damageService.playerAttack(id, id_2));
+//    }
 
 }
