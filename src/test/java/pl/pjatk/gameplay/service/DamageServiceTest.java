@@ -14,7 +14,7 @@ public class DamageServiceTest {
         // given
         Player player = new Player("Test player", 100, 100, 10);
         // when
-        damageService.heal(player, -150);
+        damageService.heal(player, 5);
         // then
         assertThat(player.getHealth()).isEqualTo(105);
     }

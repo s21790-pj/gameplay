@@ -50,7 +50,7 @@ public class PlayerService {
 //        return new Player();
 
 
-    public void delete(Long id){
+    public void deleteById(Long id){
         playerRepository.deleteById(id);
     }
 
