@@ -31,9 +31,12 @@ public class DamageService {
 //        }
 //    }
 
+    private DamageService damageService;
+
+
     public Player heal(Player player, int heal_value) {
         player.setHealth(player.getHealth() + heal_value);
-        if(player.getHealth() <= 0) {
+        if (player.getHealth() <= 0) {
             throw new RuntimeException();
         }
         return player;
@@ -49,7 +52,12 @@ public class DamageService {
         return player;
     }
 
-
+    public Player attack(Player attacker, Player defender) {
+        defender.setHealth(
+                defender.getHealth() - attacker.getAttack()
+        );
+        return defender;
+    }
 
 
 }

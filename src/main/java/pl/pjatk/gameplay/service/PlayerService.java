@@ -11,9 +11,12 @@ import java.util.Optional;
 public class PlayerService {
 
     private PlayerRepository playerRepository;
+    private DamageService damageService;
 
-    public PlayerService(PlayerRepository playerRepository) {
+
+    public PlayerService(PlayerRepository playerRepository, DamageService damageService) {
         this.playerRepository = playerRepository;
+        this.damageService = damageService;
     }
 
     public List<Player> findAll() {
@@ -50,14 +53,14 @@ public class PlayerService {
 //        return new Player();
 
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         playerRepository.deleteById(id);
     }
 
-    public Player update(Long id, Player updatedPlayer){
+    public Player update(Long id, Player updatedPlayer) {
         if (findById(updatedPlayer.getId()).isPresent()) {
             return playerRepository.save(updatedPlayer);
-        }else{
+        } else {
             return null;
         }
     }
@@ -70,7 +73,22 @@ public class PlayerService {
 //        return playerRepository.save(playerWithUpdatedProperties);
 //    }
 
-    public Player save(Player player){
+    public Player save(Player player) {
         return playerRepository.save(player);
+    }
+
+    public Player attack(Long attackerId, Long defenderId) {
+        Player attacker = findById(attackerId).get();
+        Player defender = findById(defenderId).get();
+
+        defender = damageService.attack(attacker, defender);
+
+        playerRepository.save(defender);
+
+        return defender;
+    }
+
+    public void deleteAll() {
+        playerRepository.deleteAll();
     }
 }

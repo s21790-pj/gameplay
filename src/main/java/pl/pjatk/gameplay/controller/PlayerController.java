@@ -26,6 +26,7 @@ public class PlayerController {
         return ResponseEntity.ok(playerService.findAll());
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Player>> findById(@PathVariable long id) {
         Optional<Player> byId = playerService.findById(id);
@@ -51,10 +52,4 @@ public class PlayerController {
     public ResponseEntity<Player> update(@PathVariable long id, @RequestBody Player playerWithUpdatedProperties) {
         return ResponseEntity.ok(playerService.update(id, playerWithUpdatedProperties));
     }
-
-//    @PutMapping("/{id}/{id_2}")
-//    public ResponseEntity<Player> attack(@PathVariable long id, @PathVariable long id_2){
-//        return ResponseEntity.ok(damageService.playerAttack(id, id_2));
-//    }
-
 }
