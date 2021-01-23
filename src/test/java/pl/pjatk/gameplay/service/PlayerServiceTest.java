@@ -69,7 +69,7 @@ class PlayerServiceTest {
     void save(){
         //given
         Player playerNoId = new Player("testPlayerNoId",100,100,100);
-        Player playerWithId = new Player(1L,"testPlayerWithId",100,100,100);
+        Player playerWithId = new Player(1L,"testPlayerWithId",100,100,100,anyList());
         when(playerRepository.save(playerNoId)).thenReturn(playerWithId);
         //when
         Player testPlayer = playerService.save(playerNoId);
@@ -81,7 +81,7 @@ class PlayerServiceTest {
     @Test
     void update(){
         //given
-        Player playerBeforeUpdate = new Player(1L,"PlayerBeforeUpdate",100,100,100);
+        Player playerBeforeUpdate = new Player(1L,"PlayerBeforeUpdate",100,100,100,anyList());
         Player playerAfterUpdate = new Player("playerAfterUpdate",200,200,200);
         when(playerService.update(1L, playerAfterUpdate));
         //when

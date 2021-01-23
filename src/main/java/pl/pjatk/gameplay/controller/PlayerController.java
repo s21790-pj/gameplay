@@ -52,4 +52,10 @@ public class PlayerController {
     public ResponseEntity<Player> update(@PathVariable long id, @RequestBody Player playerWithUpdatedProperties) {
         return ResponseEntity.ok(playerService.update(id, playerWithUpdatedProperties));
     }
+
+    @GetMapping("/healt/{health}")
+    public ResponseEntity<List<Player>> fibyByID(@PathVariable int health) {
+        List<Player> byId = playerService.findByHealth(health);
+        return ResponseEntity.ok(byId);
+    }
 }
